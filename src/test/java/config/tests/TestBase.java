@@ -26,6 +26,7 @@ public class TestBase {
         Configuration.remote = format("https://%s:%s@%s", login, password, browser);
         Configuration.baseUrl = "https://my.paragon-software.com/";
         Configuration.startMaximized = true;
+        mainPage.openPage();
         mainPage.changesLocalization("Русский");
     }
 
