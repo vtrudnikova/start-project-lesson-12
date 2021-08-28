@@ -15,7 +15,6 @@ public class TestBase {
     static void setup() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ParagonMainPage mainPage = new ParagonMainPage();
-        mainPage.changesLocalization("Русский");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         String login = credentials.login();
@@ -27,6 +26,7 @@ public class TestBase {
         Configuration.remote = format("https://%s:%s@%s", login, password, browser);
         Configuration.baseUrl = "https://my.paragon-software.com/";
         Configuration.startMaximized = true;
+        mainPage.changesLocalization("Русский");
     }
 
     @AfterEach
