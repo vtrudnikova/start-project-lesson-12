@@ -1,6 +1,7 @@
 package config.tests;
 
 import com.codeborne.selenide.Configuration;
+import config.tests.ru.paragon.pages.ParagonMainPage;
 import helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,6 +14,8 @@ public class TestBase {
     @BeforeAll
     static void setup() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        ParagonMainPage mainPage = new ParagonMainPage();
+        mainPage.changesLocalization("Русский");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         String login = credentials.login();

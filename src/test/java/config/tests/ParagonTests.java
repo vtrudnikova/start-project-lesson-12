@@ -1,20 +1,25 @@
 package config.tests;
 
+import com.github.javafaker.Faker;
 import config.tests.ru.paragon.pages.ParagonMainPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ParagonTests extends TestBase{
+public class ParagonTests {
     ParagonMainPage startPage = new ParagonMainPage();
+    static Faker faker = new Faker();
+    public String emailAddress = faker.internet().emailAddress();
+    public String passWord = "Qwerty111";
+
 
     @Test()
     @DisplayName("Невозможность логина незарегистрированным пользователем")
     void impossibilityOfRegistrationUnregisteredUsers() {
         startPage.openPage();
         startPage.enterEmail("test@test.com");
-        startPage.enterPassword("Qwerty127");
+        startPage.enterPassword(passWord);
         startPage.pressSubmit();
         startPage.checkTitleForUnregisteredUser();
     }
@@ -23,17 +28,17 @@ public class ParagonTests extends TestBase{
     @DisplayName("Невозможность логина c некорректным email")
     void impossibilityOfLoginWithIncorrectEmail() {
         startPage.openPage();
-        startPage.enterEmail("test@test9re.com");
-        startPage.enterPassword("Qwerty111");
+        startPage.enterEmail(emailAddress + 1);
+        startPage.enterPassword(passWord);
         startPage.pressSubmit();
         startPage.checkTitleForLoginWithIncorrectEmail();
     }
 
     @Test()
-    @DisplayName("Невозможность логина c некорректным email")
-    void checkLocalizationСhange() {
+    @DisplayName("Изменение локолизации")
+    void checkLocalizationChange() {
         startPage.openPage();
-        startPage.changesLocalization();
+        startPage.changesLocalization("English");
         startPage.checkTitleAuthorizations();
     }
 
@@ -51,7 +56,7 @@ public class ParagonTests extends TestBase{
     void theLoginPageContainsTheLoginLink() {
         startPage.openPage();
         String link = startPage.checkLinkLogin();
-        assertThat(link).isEqualTo("#/login");
+        assertThat(link).isEqualTo("https://my.paragon-software.com/#/login");
 
     }
 }

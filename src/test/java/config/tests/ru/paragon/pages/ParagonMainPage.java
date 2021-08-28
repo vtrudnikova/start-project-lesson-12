@@ -43,9 +43,9 @@ public class ParagonMainPage extends TestBase {
     }
 
     @Step("Изменить локолизацию на странице")
-    public void changesLocalization() {
+    public void changesLocalization(String language) {
         Selenide.$x("//*[@class='glyphicon glyphicon-globe']").click();
-        Selenide.$x("//a[text() = 'English']").click();
+        Selenide.$x(String.format("//a[text() = '%s']",language)).click();
 
     }
 
