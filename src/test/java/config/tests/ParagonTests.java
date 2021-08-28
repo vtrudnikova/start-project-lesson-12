@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ParagonTests {
+public class ParagonTests extends TestBase {
     ParagonMainPage startPage = new ParagonMainPage();
     static Faker faker = new Faker();
     public String emailAddress = faker.internet().emailAddress();
