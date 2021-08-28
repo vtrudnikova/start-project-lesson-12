@@ -22,7 +22,7 @@ public class TestBase {
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
         Configuration.remote = format("https://%s:%s@%s", login, password, browser);
-        Configuration.baseUrl = "https://www.tinkoff.ru/";
+        Configuration.baseUrl = "https://my.paragon-software.com/";
         Configuration.startMaximized = true;
     }
 
