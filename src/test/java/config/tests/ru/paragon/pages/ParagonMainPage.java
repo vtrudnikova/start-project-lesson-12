@@ -42,7 +42,7 @@ public class ParagonMainPage extends TestBase {
                 .shouldBe(text("Введите правильный адрес"));
     }
 
-    @Step("Изменить локолизацию на странице")
+    @Step("Изменить локализацию на странице")
     public void changesLocalization(String language) {
         Selenide.$x("//*[@class='glyphicon glyphicon-globe']").click();
         Selenide.$x(String.format("//a[text() = '%s']",language)).click();
